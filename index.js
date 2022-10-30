@@ -36,10 +36,10 @@ app.get('/api', function(req, res) {
             'pSize': '35',
             'ATPT_OFCDC_SC_CODE': 'J10',
             'SD_SCHUL_CODE': '7621038',
-            'GRADE': grade,
-            'CLASS_NM': classnum,
-            'TI_FROM_YMD': from,
-            'TI_TO_YMD': to
+            'GRADE': '1',
+            'CLASS_NM': '8',
+            'TI_FROM_YMD': '20221031',
+            'TI_TO_YMD': '20221031'
         },
         headers: {
             'Content-Type': 'application/json;charset=UTF-8'
@@ -60,8 +60,8 @@ app.get('/api', function(req, res) {
             'pSize': '35',
             'ATPT_OFCDC_SC_CODE': 'J10',
             'SD_SCHUL_CODE': '7621038',
-            'MLSV_FROM_YMD': from,
-            'MLSV_TO_YMD': to
+            'MLSV_FROM_YMD': '20221031',
+            'MLSV_TO_YMD': '20221031'
         },
         headers: {
             'Content-Type': 'application/json;charset=UTF-8'
