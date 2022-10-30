@@ -2,11 +2,9 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 
-require('dotenv').config();
-
 const port = process.env.PORT || 3000;
 
-var app = express();
+let app = express();
 app.use(express.json());
 app.use(cors());
 
@@ -62,7 +60,7 @@ app.get('/api', function(req, res) {
                 "outputs": [
                     {
                         "simpleText": {
-                            "text": "간단한 텍스트 요소입니다."
+                            "text": response
                         }
                     }
                 ]
