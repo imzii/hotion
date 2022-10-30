@@ -1,7 +1,6 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-const { response } = require('express');
 
 require('dotenv').config();
 
@@ -23,14 +22,8 @@ function addDays(date, days) {
 }
 
 app.get('/api', function(req, res) {
-    const key = process.env.KEY;
+    const key = '5c21b59a1000460eb087316813224fb5';
     
-    let type = req.query.type;
-    let from = req.query.from;
-    let to = req.query.to;
-    let grade = req.query.grade;
-    let classnum = req.query.class;
-
     let today = new Date().toISOString().substring(0, 10).replace(/-/g,'');
     
     axios({
