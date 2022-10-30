@@ -10,22 +10,10 @@ var app = express();
 app.use(express.json());
 app.use(cors());
 
-function addDays(date, days) {
-    var y = parseInt(date.substr(0, 4));
-    var m = parseInt(date.substr(4, 2));
-    var d = parseInt(date.substr(6 ,2));
-    d = new Date(yy, mm - 1, dd + days);
-    y = d.getFullYear();
-    m = d.getMonth() + 1; mm = (mm < 10) ? '0' + mm : mm;
-    d = d.getDate(); dd = (dd < 10) ? '0' + dd : dd;
-    return '' + y + '-' +  m  + '-' + d;		
-}
-
 app.get('/api', function(req, res) {
     const key = '5c21b59a1000460eb087316813224fb5';
     
     let today = new Date().toISOString().substring(0, 10).replace(/-/g,'');
-    
     axios({
         method: 'get',
         url: 'https://open.neis.go.kr/hub/misTimetable',
