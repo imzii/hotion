@@ -57,7 +57,7 @@ apiRouter.post('/timeTable', function(req, res) {
 });
 
 apiRouter.post('/mealInfo', function(req, res) {
-    let date = JSON.parse(req.body['action']['params']['date'])['value'].replace(/-/g, '');
+    let date = req.body['action']['detailParams']['date']['origin'].replace(/-/g, '');
     axios({
         method: 'get',
         url: 'https://open.neis.go.kr/hub/mealServiceDietInfo',
