@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f3;
+    font-family: 'Pretendard';
+    box-sizing: border-box;
+}
+header {
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 10px;
+    padding: 20px;
+}
+div.box {
+    border-radius: 50px;
+    background: #f0f0f3;
+    box-shadow:  10px 10px 30px #aeaec040,
+                -10px -10px 30px #ffffff;
+    padding: 30px;
+}
+h1 {
+    font-weight: 100;
+}
