@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static(__dirname + "/client"));
-//app.disable('etag');
+app.disable('etag');
 
 const key = '5c21b59a1000460eb087316813224fb5';
 
