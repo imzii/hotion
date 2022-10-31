@@ -13,7 +13,7 @@ app.disable('etag');
 
 const key = '5c21b59a1000460eb087316813224fb5';
 
-apiRouter.all('/timeTable', function(req, res) {
+apiRouter.post('/timeTable', function(req, res) {
     let nextMonday = new Date();
     nextMonday.setDate(nextMonday.getDate() + (((1 + 7 - nextMonday.getDay()) % 7) || 7));
     console.log(nextMonday)
@@ -56,7 +56,7 @@ apiRouter.all('/timeTable', function(req, res) {
     });
 });
 
-apiRouter.all('/mealInfo', function(req, res) {
+apiRouter.post('/mealInfo', function(req, res) {
     let date = req.body['action']['detailParams']['date']['origin'].replace(/-/g, '');
     axios({
         method: 'get',
