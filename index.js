@@ -57,7 +57,7 @@ apiRouter.post('/timeTable', function(req, res) {
 });
 
 apiRouter.post('/mealInfo', function(req, res) {
-    let date = req.body['action']['detailParams']['date']['origin'].replace(/-/g, '');
+    let date = JSON.parse(req.body['action']['params']['date'])['value'].replace(/-/g, '');
     axios({
         method: 'get',
         url: 'https://open.neis.go.kr/hub/mealServiceDietInfo',
@@ -77,13 +77,20 @@ apiRouter.post('/mealInfo', function(req, res) {
         }
     })
     .then(response => {
+        let simpleText = '';
+        try {
+            simpleText = response.data['mealServiceDietInfo'][1]['row'][0]['DDISH_NM'].replace(/<br\/>/g, '\n');
+        }
+        catch {
+            simpleText = '급식 정보가 없습니다.';
+        }
         res.send({
             "version": "2.0",
             "template": {
                 "outputs": [
                     {
                         "simpleText": {
-                            "text": response.data['mealServiceDietInfo'][1]['row'][0]['DDISH_NM'].replace(/<br\/>/g, '\n')
+                            "text": simpleText
                         }
                     }
                 ]
