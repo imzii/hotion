@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const path = require('path');
+const mysql = require('mysql');
 
 const port = process.env.PORT || 3000;
 const apiRouter = express.Router();
@@ -105,20 +106,38 @@ apiRouter.all('/mealInfo', function(req, res) {
 });
 
 apiRouter.all('/askQuestion', function(req, res) {
-    let imageUrls = req.body['action']['detailParams']['secureimage']['origin'].slice(5, -1);
-    res.send({
-        "version": "2.0",
-        "template": {
-            "outputs": [
-                {
-                    "simpleImage": {
-                        "imageUrl": imageUrls,
-                        "altText": "오류"
-                    }
-                }
-            ]
-        }
+    let imageUrl = req.body['action']['detailParams']['secureimage']['origin'].slice(5, -1).split(',', '');
+    let image = null;
+    axios({
+        method: 'get',
+        url: imageUrl
+    })
+    .then(response => {
+        image = response.blob();
     });
+    var connection = mysql.createConnection({
+        host: 'us-cdbr-east-06.cleardb.net',
+        user: 'b3f9ed443dd4bb',
+        password: '1513e835',
+        database: 'heroku_2b73b425b0ab438'
+    });
+    connection.connect();
+    connection.query(`INSERT INTO questions (image) VALUES (${image});`, function (error, results, fields) {
+        if (error) throw error;
+        res.send({
+            "version": "2.0",
+            "template": {
+                "outputs": [
+                    {
+                        "simpleText": {
+                            "text": results
+                        }
+                    }
+                ]
+            }
+        });
+    });
+    connection.end();
 });
 
 app.listen(port);
