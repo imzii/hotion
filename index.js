@@ -105,7 +105,7 @@ apiRouter.all('/mealInfo', function(req, res) {
 });
 
 apiRouter.all('/askQuestion', function(req, res) {
-    let imageUrls = req.body['action']['detailParams']['secureimage']['origin'];
+    let imageUrls = req.body['action']['detailParams']['secureimage']['origin'].slice(5, -1);
     res.send({
         "version": "2.0",
         "template": {
