@@ -105,11 +105,19 @@ apiRouter.all('/mealInfo', function(req, res) {
 });
 
 apiRouter.all('/askQuestion', function(res, req) {
-    let imageUrls = req.body['action']['detailParams']['secureimage']['origin'].slice(5, -1).split(',');
-    for (imageUrl of imageUrls) {
-        const image = axios.get(imageURL);
-    }
-    res.send(image);
+    let imageUrls = req.body['action']['detailParams']['secureimage']['origin'];
+    res.send({
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleImage": {
+                        "imageUrl": imageUrls
+                    }
+                }
+            ]
+        }
+    })
 });
 
 app.listen(port);
