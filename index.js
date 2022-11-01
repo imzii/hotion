@@ -104,7 +104,7 @@ apiRouter.all('/mealInfo', function(req, res) {
     });
 });
 
-apiRouter.all('/askQuestion', function(res, req) {
+apiRouter.all('/askQuestion', function(req, res) {
     let imageUrls = req.body['action']['detailParams']['secureimage']['origin'];
     res.send({
         "version": "2.0",
@@ -118,7 +118,7 @@ apiRouter.all('/askQuestion', function(res, req) {
                 }
             ]
         }
-    })
+    });
 });
 
 app.listen(port);
