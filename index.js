@@ -112,7 +112,8 @@ apiRouter.all('/askQuestion', function(res, req) {
             "outputs": [
                 {
                     "simpleImage": {
-                        "imageUrl": imageUrls
+                        "imageUrl": imageUrls,
+                        "altText": "오류"
                     }
                 }
             ]
