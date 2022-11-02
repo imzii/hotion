@@ -107,7 +107,18 @@ apiRouter.all('/mealInfo', function(req, res) {
 
 apiRouter.all('/askQuestion', function(req, res) {
     let imageUrl = req.body['action']['detailParams']['secureimage']['origin'].slice(5, -1);
-    res.send(imageUrl);
+    res.send({
+                "version": "2.0",
+                "template": {
+                    "outputs": [
+                        {
+                            "simpleText": {
+                                "text": imageUrl
+                            }
+                        }
+                    ]
+                }
+            });
     // let image = null;
     // axios({
     //     method: 'get',
